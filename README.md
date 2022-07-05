@@ -1,6 +1,6 @@
 # php82-fpm
 
-A PHP 8.1 (FPM) based Docker base image.
+A PHP 8.2 (FPM) based Docker base image.
 
 [![Build Images](https://github.com/Ilyes512/php82-fpm/workflows/Build%20Images/badge.svg)](https://github.com/Ilyes512/php82-fpm/actions?query=workflow%3A%22Build+Images%22)
 
