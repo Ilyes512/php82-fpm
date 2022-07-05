@@ -117,8 +117,8 @@ RUN apt-get update \
     && phive install --global composer:$COMPOSER_VERSION --trust-gpg-keys CBB3D576F2A0946F \
     && rm -rf /root/.phive \
     # Install Xdebug PHP extension
-    && pecl install "xdebug-$XDEBUG_VERSION" \
-    && docker-php-ext-enable xdebug \
+    # && pecl install "xdebug-$XDEBUG_VERSION" \
+    # && docker-php-ext-enable xdebug \
     && cp "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
     # Cleanup
     && apt-get purge --assume-yes $PHPIZE_DEPS \
