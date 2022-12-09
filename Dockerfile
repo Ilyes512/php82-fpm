@@ -1,5 +1,5 @@
 # Latest version of PHP base image: https://hub.docker.com/_/php?tab=tags
-FROM php:8.2.0RC6-fpm-bullseye AS runtime
+FROM php:8.2.0-fpm-bullseye AS runtime
 
 ARG UNIQUE_ID_FOR_CACHEFROM=runtime
 
@@ -45,6 +45,8 @@ RUN apt-get update \
         # Dependency of PHP event-extension
         libevent-dev \
         libssl-dev \
+        # Dependency of PHP soap-extension
+        libxml2-dev \
     # Configure PHP gd-extension
     && docker-php-ext-configure gd \
         --enable-gd \
@@ -60,6 +62,7 @@ RUN apt-get update \
         gd \
         bcmath \
         zip \
+        soap \
         # Dependency of PHP event-extension
         sockets \
     && pecl install "event-$PHP_EVENT_VERSION" \
@@ -76,6 +79,7 @@ RUN apt-get update \
         libzip-dev \
         libevent-dev \
         libssl-dev \
+        libxml2-dev \
     # Cleanup
     && rm -rf /var/www/* \
     && apt-get autoremove --assume-yes \
@@ -92,9 +96,9 @@ ARG UNIQUE_ID_FOR_CACHEFROM=builder
 # Latest version of Phive: https://api.github.com/repos/phar-io/phive/releases/latest
 ARG PHIVE_VERSION=0.15.2
 # Latest version of Composer: https://getcomposer.org/download
-ARG COMPOSER_VERSION=2.4.2
+ARG COMPOSER_VERSION=2.4.4
 # Latest version of Xdebug: https://github.com/xdebug/xdebug/tags or https://pecl.php.net/package/xdebug
-ARG XDEBUG_VERSION=3.2.0alpha3
+ARG XDEBUG_VERSION=3.2.0
 
 RUN apt-get update \
     && apt-get install --assume-yes --no-install-recommends \
@@ -117,8 +121,8 @@ RUN apt-get update \
     && phive install --global composer:$COMPOSER_VERSION --trust-gpg-keys CBB3D576F2A0946F \
     && rm -rf /root/.phive \
     # Install Xdebug PHP extension
-    # && pecl install "xdebug-$XDEBUG_VERSION" \
-    # && docker-php-ext-enable xdebug \
+    && pecl install "xdebug-$XDEBUG_VERSION" \
+    && docker-php-ext-enable xdebug \
     && cp "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
     # Cleanup
     && apt-get purge --assume-yes $PHPIZE_DEPS \
