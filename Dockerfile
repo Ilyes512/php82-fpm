@@ -98,7 +98,7 @@ ARG PHIVE_VERSION=0.15.2
 # Latest version of Composer: https://getcomposer.org/download
 ARG COMPOSER_VERSION=2.4.4
 # Latest version of Xdebug: https://github.com/xdebug/xdebug/tags or https://pecl.php.net/package/xdebug
-ARG XDEBUG_VERSION=3.2.0alpha3
+ARG XDEBUG_VERSION=3.2.0
 
 RUN apt-get update \
     && apt-get install --assume-yes --no-install-recommends \
@@ -121,8 +121,8 @@ RUN apt-get update \
     && phive install --global composer:$COMPOSER_VERSION --trust-gpg-keys CBB3D576F2A0946F \
     && rm -rf /root/.phive \
     # Install Xdebug PHP extension
-    # && pecl install "xdebug-$XDEBUG_VERSION" \
-    # && docker-php-ext-enable xdebug \
+    && pecl install "xdebug-$XDEBUG_VERSION" \
+    && docker-php-ext-enable xdebug \
     && cp "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
     # Cleanup
     && apt-get purge --assume-yes $PHPIZE_DEPS \
