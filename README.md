@@ -58,12 +58,12 @@ docker build --tag ghcr.io/ilyes512/php82-fpm:vscode-latest --target vscode .
 Available [Task](https://taskfile.dev/#/) commands:
 
 ```
-* act:master:   Run Act with push event on master branch
-* act:pr:       Run Act with pull_request event
-* act:tag:      Run Act with tag (push) event
-* build:        Build all PHP Docker image targets
-* lint:         Apply a Dockerfile linter (https://github.com/hadolint/hadolint)
-* shell:        Interactive shell
+* build:          Build all PHP Docker image targets
+* lint:           Apply a Dockerfile linter (https://github.com/hadolint/hadolint)
+* shell:          Interactive shell
+* act:main:       Run Act with push event on main branch
+* act:pr:         Run Act with pull_request event
+* act:tag:        Run Act with tag (push) event
 ```
 
 ### Act tasks

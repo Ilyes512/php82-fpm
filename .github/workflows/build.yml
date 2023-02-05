@@ -2,10 +2,9 @@ name: Build Images
 
 on:
   push:
-    branches: [master]
+    branches: [main]
     tags: ['*']
   pull_request:
-    branches: [master]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
