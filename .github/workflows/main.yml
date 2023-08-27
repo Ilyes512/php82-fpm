@@ -19,7 +19,7 @@ jobs:
     with:
       runner-os: ${{ matrix.os }}
       arch: ${{ matrix.arch }}
-      cache-key: ${{ matrix.os }}-buildx-${{ arch }}-${{ github.ref_name }}-${{ github.sha }}
+      cache-key: ${{ matrix.os }}-buildx-${{ matrix.arch }}-${{ github.ref_name }}-${{ github.sha }}
       cache-restore-keys: |
         ${{ matrix.os }}-buildx-${{ matrix.arch }}-${{ github.ref_name }}-
         ${{ matrix.os }}-buildx-${{ matrix.arch }}-
