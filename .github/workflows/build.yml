@@ -98,7 +98,7 @@ jobs:
             type=ref,event=tag
             type=ref,event=pr,prefix=vscode-pr-
       - name: Build and push (runtime)
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           push: ${{ !(env.ACT || github.actor == 'dependabot[bot]') }}
           context: .
@@ -109,7 +109,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
       - name: Build and push (builder)
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           push: ${{ !(env.ACT || github.actor == 'dependabot[bot]') }}
           context: .
@@ -120,7 +120,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
       - name: Build and push (builder_nodejs)
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           push: ${{ !(env.ACT || github.actor == 'dependabot[bot]') }}
           context: .
@@ -131,7 +131,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
       - name: Build and push (vscode)
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           push: ${{ !(env.ACT || github.actor == 'dependabot[bot]') }}
           context: .
