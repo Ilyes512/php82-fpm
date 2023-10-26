@@ -36,7 +36,7 @@ jobs:
           restore-keys: ${{ inputs.cache-restore-keys }}
       - name: Image name
         id: image_name
-        uses: ASzc/change-string-case-action@v5
+        uses: ASzc/change-string-case-action@v6
         with:
           string: ghcr.io/${{ github.repository }}
       - name: Log in to the Container registry
