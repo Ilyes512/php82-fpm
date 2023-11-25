@@ -4,13 +4,13 @@ FROM php:8.2.12-fpm-bullseye AS runtime
 ARG UNIQUE_ID_FOR_CACHEFROM=runtime
 
 # Latest version of event-extension: https://pecl.php.net/package/event
-ARG PHP_EVENT_VERSION=3.0.8
+ARG PHP_EVENT_VERSION=stable
 # Latest version of igbinary-extension: https://pecl.php.net/package/igbinary
-ARG PHP_IGBINARY_VERSION=3.2.14
+ARG PHP_IGBINARY_VERSION=stable
 # Latest version of redis-extension: https://pecl.php.net/package/redis
-ARG PHP_REDIS_VERSION=6.0.2
+ARG PHP_REDIS_VERSION=stable
 # Latest version of amqp-extension: https://pecl.php.net/package/amqp
-ARG PHP_AMQP_VERSION=2.1.1
+ARG PHP_AMQP_VERSION=stable
 
 ENV SMTPHOST mail
 ENV SMTPEHLO localhost
@@ -128,7 +128,7 @@ ARG PHIVE_VERSION=0.15.2
 # Latest version of Composer: https://getcomposer.org/download
 ARG COMPOSER_VERSION=2.6.5
 # Latest version of Xdebug: https://github.com/xdebug/xdebug/tags or https://pecl.php.net/package/xdebug
-ARG XDEBUG_VERSION=3.2.2
+ARG XDEBUG_VERSION=stable
 
 RUN apt-get update \
     && apt-get install --assume-yes --no-install-recommends \
