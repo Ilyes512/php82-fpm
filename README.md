@@ -4,6 +4,9 @@ A PHP 8.2 (FPM) based Docker base image.
 
 [![Build Images](https://github.com/Ilyes512/php82-fpm/actions/workflows/main.yml/badge.svg)](https://github.com/Ilyes512/php82-fpm/actions/workflows/main.yml)
 
+NOTE:  
+This is replaced by <https://github.com/Ilyes512/php82> which contains both a FPM and a Apache based version.
+
 ## Pulling the images
 
 ```
